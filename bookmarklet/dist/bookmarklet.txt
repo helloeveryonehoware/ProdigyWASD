@@ -1,0 +1,2 @@
+javascript:
+(()=>{"use strict";!async function(){let e=()=>window.Boot.prototype.game._state._current.user.source;async function t(t){for(let a=0;a<100;a++)await new Promise((e=>setTimeout(e,2))),e()._playerContainer.x-=t/100}async function a(t){for(let a=0;a<100;a++)await new Promise((e=>setTimeout(e,2))),e()._playerContainer.y-=t/100}window.addEventListener("keydown",(e=>{switch(e.key){case"w":a(40);break;case"s":a(-40);break;case"a":t(40);break;case"d":t(-40)}}))}()})();
