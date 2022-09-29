@@ -61,8 +61,7 @@ async function ProdigyWASD () : Promise<void> {
 
 
 if (extension) {
-    // @ts-expect-error
-    window.SW.Load.onGameLoad = ProdigyWASD;
+    // HELP
 } else {
     ProdigyWASD();
 }

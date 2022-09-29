@@ -37,7 +37,9 @@ async function ProdigyWASD() {
 }
 ;
 if (extension) {
-    window.SW.Load.onGameLoad = ProdigyWASD;
+    document.addEventListener("keydown", function () {
+        ProdigyWASD();
+    });
 }
 else {
     ProdigyWASD();
