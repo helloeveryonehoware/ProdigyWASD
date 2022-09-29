@@ -2,6 +2,16 @@
 
 OUTFILE="./dist/bookmarklet.txt"
 
+
+
+# Compile the bundle
+cd ../main/
+npm install
+npx tsc
+npx webpack ./dist/WASD.js --mode production --output-path ./dist/
+cd ../bookmarklet
+
+
 # Completley erase this file (delte, remake)
 rm $OUTFILE
 touch $OUTFILE
@@ -9,14 +19,9 @@ touch $OUTFILE
 # Add javascript:
 echo "javascript:" >> $OUTFILE
 
-# Compile the bundle
-cd ../main/
-npm install
-npx tsc
-npx webpack ./dist/WASD.js --mode production --output-path ./dist/
+# Using extension = false, because we're using the bookmarklet
+print "window.ProdigyWASDextension=false;" >> $WASDJS
 
-# Go back to the bookmarklet
-cd ../bookmarklet
 
 # Copy and paste the bundle to OUTFILE.
 cat ../main/dist/main.js >> $OUTFILE

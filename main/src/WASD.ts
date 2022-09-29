@@ -1,4 +1,7 @@
-console.log("ProdigyWASD ENV: " + process.env.target);
+// @ts-expect-error
+const extension : boolean = window.ProdigyWASDextension;
+
+console.log("ProdigyWASD Running " + (extension ? "extension" : "bookmarklet") + ".");
 
 
 
@@ -57,4 +60,9 @@ async function ProdigyWASD () : Promise<void> {
 };
 
 
-ProdigyWASD();
+if (extension) {
+    // @ts-expect-error
+    window.SW.Load.onGameLoad = ProdigyWASD;
+} else {
+    ProdigyWASD();
+}

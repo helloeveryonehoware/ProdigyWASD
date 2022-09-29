@@ -1,5 +1,6 @@
 ﻿"use strict";
-console.log("ProdigyWASD ENV: " + process.env.target);
+const extension = window.ProdigyWASDextension;
+console.log("ProdigyWASD Running " + (extension ? "extension" : "bookmarklet") + ".");
 async function ProdigyWASD() {
     let player = () => window.Boot.prototype.game._state._current.user.source._playerContainer;
     async function ChangeX(x) {
@@ -35,4 +36,9 @@ async function ProdigyWASD() {
     });
 }
 ;
-ProdigyWASD();
+if (extension) {
+    window.SW.Load.onGameLoad = ProdigyWASD;
+}
+else {
+    ProdigyWASD();
+}

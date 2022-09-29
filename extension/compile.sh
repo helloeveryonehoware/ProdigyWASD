@@ -22,24 +22,28 @@ ext () {
 echo ""
 
 
-# Compile the bundle
-cd ../main/
-npm install
-npx tsc
-npx webpack ./dist/WASD.js --mode production --output-path ./dist/
-
-
-# Copy the bundle to the extension
-cd ../extension 
-
 # Remove the WASD.js file
 rm $WASDJS && xlog "Deleted WASD.js"
 
 # Create the WASD.js file
 touch $WASDJS && xlog "Created WASD.js"
 
+
+# Compile the bundle
+cd ../main/
+npm install
+npx tsc
+npx webpack ./dist/WASD.js --mode production --output-path ./dist/
+cd ../extension 
+
+
+
 # Add a notice about the source code to the WASD.js file
 echo "/* This file is generated with code to WASD movement in Prodigy. The full source code is available at https://github.com/ProdigyPNP/ProdigyWASD */" >> $WASDJS
+
+# Using extension = true
+echo "window.ProdigyWASDextension=true;" >> $WASDJS
+
 
 # Copy and paste the bundle to the WASD.js file.
 cat ../main/dist/main.js >> $WASDJS && xlog "Added code to WASD.js"
