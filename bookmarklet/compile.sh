@@ -13,7 +13,7 @@ echo "javascript:" >> $OUTFILE
 cd ../main/
 npm install
 npx tsc
-npx webpack ./dist/WASD.js --mode production --output-path ./dist/ 
+npx webpack ./dist/WASD.js --mode production --output-path ./dist/
 
 # Go back to the bookmarklet
 cd ../bookmarklet

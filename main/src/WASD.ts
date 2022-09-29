@@ -1,26 +1,36 @@
-(async function () : Promise<void> {
+console.log("ProdigyWASD ENV: " + process.env.target);
 
-    // @ts-expect-error
-    let player = () => window.Boot.prototype.game._state._current.user.source;
+
+
+async function ProdigyWASD () : Promise<void> {
+
+
+
+    // @ts-expect-error 
+    let player = () : any => window.Boot.prototype.game._state._current.user.source._playerContainer;
+    
     
 
 
     async function ChangeX (x : number) {
         for (let i = 0; i < 100; i++) {
             await new Promise(r => setTimeout(r, 2));
-            player()._playerContainer.x -= x/100;;
+            player().x -= x/100;;
         }
     }
 
     async function ChangeY (y : number) {
         for (let i = 0; i < 100; i++) {
             await new Promise(r => setTimeout(r, 2));
-            player()._playerContainer.y -= y/100;;
+            player().y -= y/100;;
         }
     }
 
 
     window.addEventListener("keydown", event => {
+
+
+        console.log(event)
 
         switch (event.key) {
 
@@ -44,4 +54,7 @@
     });
 
 
-})();
+};
+
+
+ProdigyWASD();

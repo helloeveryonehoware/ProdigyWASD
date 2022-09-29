@@ -4,7 +4,6 @@
 	"version": "1.0.0",
 	"description": "Adds WASD Movement to Prodigy, the math game.",
 	"author": "ProdigyPNP",
-
 	"permissions": [
 		"declarativeNetRequest",
 		"storage"
