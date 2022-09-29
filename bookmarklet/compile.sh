@@ -20,7 +20,7 @@ touch $OUTFILE
 echo "javascript:" >> $OUTFILE
 
 # Using extension = false, because we're using the bookmarklet
-print "window.ProdigyWASDextension=false;" >> $WASDJS
+echo "window.ProdigyWASDextension=false;" >> $OUTFILE
 
 
 # Copy and paste the bundle to OUTFILE.
