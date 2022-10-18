@@ -11,6 +11,15 @@
 	"host_permissions": [
 		"*://*.prodigygame.com/*"
 	],
+	"declarative_net_request" : {
+		"rule_resources" : [
+			{
+				"id": "rulesets",
+				"enabled": true,
+				"path": "rules.json"
+			}
+		]
+	},
 	"icons": {
 		"16": "assets/x16.png",
 		"48": "assets/x48.png",

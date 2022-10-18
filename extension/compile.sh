@@ -31,9 +31,9 @@ touch $WASDJS && xlog "Created WASD.js"
 
 # Compile the bundle
 cd ../main/
-npm install
-npx tsc
-npx webpack ./dist/WASD.js --mode production --output-path ./dist/
+pnpm install
+pnpm tsc
+pnpm webpack ./dist/WASD.js --mode production --output-path ./dist/
 cd ../extension 
 
 

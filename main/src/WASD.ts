@@ -4,33 +4,25 @@ const extension : boolean = window.ProdigyWASDextension;
 console.log("ProdigyWASD Running " + (extension ? "extension" : "bookmarklet") + ".");
 
 
-
-async function ProdigyWASD () : Promise<void> {
-
-
-
-    // @ts-expect-error 
-    let player = () : any => window.Boot.prototype.game._state._current.user.source._playerContainer;
-    
-    
+async function ProdigyWASD (game : () => any) {
 
 
     async function ChangeX (x : number) {
         for (let i = 0; i < 100; i++) {
             await new Promise(r => setTimeout(r, 2));
-            player().x -= x/100;;
+            game().user.source._playerContainer.x -= x/100;;
         }
     }
 
     async function ChangeY (y : number) {
         for (let i = 0; i < 100; i++) {
             await new Promise(r => setTimeout(r, 2));
-            player().y -= y/100;;
+            game().user.source._playerContainer.y -= y/100;;
         }
     }
 
 
-    window.addEventListener("keydown", event => {
+    window.addEventListener("keydown", (event) => {
 
 
         console.log(event)
@@ -56,12 +48,18 @@ async function ProdigyWASD () : Promise<void> {
  
     });
 
-
 };
 
 
+
+
 if (extension) {
-    // HELP
+
+    window.ProdigyWASD = ProdigyWASD;
+    
+    document.getElementById("gameFile")!.setAttribute("onload", `ProdigyWASD(window.Boot.prototype.game._state._current)`)
+    document.getElementById("gameFile")!.dispatchEvent(new CustomEvent("load"));
 } else {
-    ProdigyWASD();
+    // @ts-expect-error
+    ProdigyWASD(() => window.Boot.prototype.game._state._current);
 }

@@ -1,4 +1,7 @@
-cd ./bookmarklet/
+cd ./main/
+pnpm install
+
+cd ../bookmarklet/
 sh ./compile.sh
 
 

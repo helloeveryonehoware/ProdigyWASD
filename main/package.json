@@ -4,7 +4,7 @@
   "description": "Main script for WASD in Prodigy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd .. && sh build.sh"
   },
   "author": "gemsvido",
   "license": "MPL-2.0",
